@@ -1,13 +1,21 @@
 
 
+function req(id){
 
-const request = new XMLHttpRequest();
-request.open('GET', 'https://dummyjson.com/products/1');
-request.send();
+    const request = new XMLHttpRequest();
+    request.open('GET', `https://dummyjson.com/products/` + id);
+    request.send();
+    
+    request.addEventListener("load", function(){
+        const data = (JSON.parse(this.responseText));
+        console.log(data);
+    });
 
-request.addEventListener("load", function(){
-    const data = (JSON.parse(this.responseText));
-    console.log(data);
-});
+}
+
+req(1);
+req(2);
+req(3);
+req('');
 
 console.log('end');
